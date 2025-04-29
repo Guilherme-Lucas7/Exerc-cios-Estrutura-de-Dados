@@ -1,0 +1,118 @@
+ numero = '123-4'
+ titular = "João"
+ saldo = 120.0
+ limite = 1000.0
+
+ numero1 = '123-4'
+ titular1 = "João"
+ saldo1 = 120.0
+ limite1 = 1000.0
+
+ numero2 = '123-5'
+ titular2 = "José"
+ saldo2 = 200.0
+ limite2 = 1000.0
+
+
+conta = {"numero": '123-4', "titular": "João", "saldo": 120.0, "limite": 1000.0}
+
+numero = conta ["numero"]
+numero
+
+conta2 = {"numero": '123-5', "titular": "José", "saldo": 200.0, "limite": 1000.0}
+
+def cria_conta():
+    conta = {"numero": '123-4', "titular": "João", "saldo": 120.0, "limite": 1000.0}
+    return conta
+
+def cria_conta(numero, titular, saldo, limite):
+    conta = {"numero": numero, "titular": titular, "saldo": saldo, "limite": limite}
+    return conta
+
+ conta1 = cria_conta('123-4', 'João', 120.0, 1000.0)
+ conta2 = cria_conta('123-5', 'José', 200.0, 1000.0)
+
+conta1['numero']
+
+#Funcionalidades
+def depositar(conta, valor):
+    conta['saldo'] = conta['saldo'] + valor
+
+conta2['numero']
+
+def depositar(conta, valor):
+    conta['saldo'] += valor
+
+def sacar(conta, valor):
+    conta['saldo'] -= valor
+
+def extrato(conta):
+    print("numero: {} \nsaldo: {}".format(conta['numero'], conta['saldo']))
+
+    conta = cria_conta('123-7', 'João', 500.0, 1000.0)
+    depositar(conta, 50.0)
+    extrato(conta)
+
+    #numero: '123-7'
+    #saldo: 550.0
+
+    sacar(conta, 20.0)
+    extrato(conta)
+
+    #numero: '123-7'
+    #saldo 530.0
+
+class Pessoa:
+  def __init__(self, nome, idade, peso, altura):
+    self.nome = nome
+    self.idade = idade
+    self.peso = peso
+    self.altura = altura
+
+  def envelhecer(self, anos=1):
+    for _ in range(anos):
+      self.idade += 1
+      if self.idade < 21:
+        self.altura += 0.5
+
+  def engordar(self, quilos):
+    self.peso += quilos
+
+  def emagrecer(self, quilos):
+    self.peso -= quilos
+
+  def crescer(self, cm):
+    self.altura += cm
+
+pessoa1 = Pessoa("Alice", 18, 60.0, 160.0)
+print (f"Nome: {pessoa1.nome}, Idade: {pessoa1.idade}, Peso; {pessoa1.peso}, kg, altura: {pessoa1.altura} cm")
+
+pessoa1.envelhecer(3)
+pessoa1.engordar(2.5)
+pessoa1.emagrecer(1.0)
+pessoa1.crescer(1)
+
+print(f"Nome: {pessoa1.nome}, Idade: {pessoa1.idade}, Peso: {pessoa1.peso}, kg, Altura: {pessoa1.altura} cm")
+
+#Faça um programa que pergunte que dia, e diga quantos faltam até o final do mês. Considere o mês com trinta e um dia.
+
+dia = int(input("Digite o dia de hoje: "))
+dia_do_mes = 31 - dia
+print("Faltam", dia_do_mes, "para acabar o Mês")
+
+#1 Manipulação  de lista: Inversão e ordenação:
+# Crie uma lista de 1 a 100 e em seguida inverta a ordem:
+
+Lista = list(range(1, 100))
+Lista.reverse()
+print(Lista)
+
+vetor = ["u", "d", "f"]
+print(vetor[0:2])
+
+soma = 0
+while soma < 20:
+  numero = int(input("Digite um número: "))
+  soma += numero
+print("A soma dos números é:", soma)
+
