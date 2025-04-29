@@ -1,0 +1,92 @@
+1) Crie um vetor de inteiros ( int ) de 10 posições. Preencha-o
+com os valores 10 , 20 , 30 , 40 , 50 , 60 , 70 , 80 , 90 e
+100 . Use um for para exibir os valores deste vetor
+
+
+valor = int
+vetor = [10,20,30,40,50,60,70,80,90,100]
+for valor in vetor:
+    print(valor)
+
+
+2) Crie uma matriz de caracteres ( char ) de 16 posições (4x4).
+Preencha-a com os valores a , b , c , d , e , f , g , h , i , j ,
+k , l , m , n , o e p . Use dois for para exibir os valores desta
+matriz.
+
+
+matriz = ['a','b','c','d'],['e','f','g','h'],['i','j','k','l'],['m','n','o','p']
+
+
+
+for linha in matriz:
+   for caracter in linha:
+      print(caracter, end=' ')
+      print()
+
+
+3) Faça um programa com um vetor com 10 elementos inteiros
+positivos (aleatórios e de sua escolha). Permita que seja solicitado
+um determinado valor inteiro e positivo para ser procurado neste
+vetor. Caso exista, o programa deve exibir o índice no qual o valor
+está posicionado. Caso contrário, o programa deve informar que o
+elemento não existe no vetor
+
+# Vetor com 10 elementos inteiros positivos de sua escolha
+vetor = [5, 12, 8, 33, 21, 7, 19, 27, 3, 15]
+
+# Solicita ao usuário o valor a ser procurado
+valor_procurado = int(input("Digite um valor inteiro e positivo para procurar no vetor: "))
+
+# Verifica se o valor está no vetor e exibe o índice
+if valor_procurado in vetor:
+    indice = vetor.index(valor_procurado)
+    print(f"O valor {valor_procurado} foi encontrado no índice {indice}.")
+else:
+    print("O valor não existe no vetor.")
+
+
+4) Faça um programa com uma matriz com 9 elementos (3x3)  reais positivos (aleatórios e de sua escolha). Calcule e exiba a soma
+dos elementos de cada linha desta matriz.
+
+# Criando a matriz 3x3 com valores reais positivos
+matriz = [
+    [1.5, 2.0, 3.5],
+    [4.0, 5.5, 6.0],
+    [7.25, 8.0, 9.75]
+]
+
+# Calculando e exibindo a soma de cada linha
+for i in range(3):
+    soma_linha = sum(matriz[i])
+    print(f"Soma dos elementos da linha {i + 1}: {soma_linha}")
+
+
+5) Faça um programa com uma matriz 5x5 de inteiros
+positivos ou negativos (aleatórios e de sua escolha) e encontre e
+exiba o maior elemento desta matriz.
+
+
+
+# Criando a matriz 5x5 com inteiros positivos e negativos (valores escolhidos)
+matriz = [
+    [3, -7, 12, 5, 0],
+    [-1, 4, -8, 6, 15],
+    [9, -2, 11, -4, 3],
+    [7, 13, -6, 2, -9],
+    [5, 10, -3, 8, 1]
+]
+
+# Inicializa o maior elemento com o primeiro da matriz
+maior = matriz[0][0]
+
+# Percorre a matriz para encontrar o maior valor
+for linha in matriz:
+    for elemento in linha:
+        if elemento > maior:
+            maior = elemento
+
+# Exibe o maior elemento encontrado
+print(f"O maior elemento da matriz é: {maior}")
+
+
