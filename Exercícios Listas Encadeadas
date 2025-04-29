@@ -1,0 +1,300 @@
+1. Implementação de Lista Encadeada para Gerenciamento de Tarefas
+
+class Tarefa:
+    def __init__(self, nome):
+        self.nome = nome
+        self.proxima = None
+
+class ListaEncadeada:
+    def __init__(self):
+        self.head = None
+
+    def adicionar_tarefa(self, nome):
+        nova_tarefa = Tarefa(nome)
+        nova_tarefa.proxima = self.head
+        self.head = nova_tarefa
+
+    def remover_tarefa(self, nome):
+        atual = self.head
+        anterior = None
+        while atual and atual.nome != nome:
+            anterior = atual
+            atual = atual.proxima
+        if atual:
+            if anterior:
+                anterior.proxima = atual.proxima
+            else:
+                self.head = atual.proxima
+
+    def mostrar_tarefas(self):
+        atual = self.head
+        while atual:
+            print(atual.nome)
+            atual = atual.proxima
+
+# Exemplo de uso
+lista_tarefas = ListaEncadeada()
+lista_tarefas.adicionar_tarefa("Estudar Estruturas de Dados")
+lista_tarefas.adicionar_tarefa("Revisar Código")
+
+print("Tarefas iniciais:")
+lista_tarefas.mostrar_tarefas()
+
+lista_tarefas.remover_tarefa("Revisar Código")
+
+print("\nTarefas após remover 'Revisar Código':")
+lista_tarefas.mostrar_tarefas()
+
+
+2. Agenda Telefônica com Lista Duplamente Encadeada
+
+
+class Contato:
+    def __init__(self, nome, telefone):
+        self.nome = nome
+        self.telefone = telefone
+        self.anterior = None
+        self.proximo = None
+
+class ListaDuplamenteEncadeada:
+    def __init__(self):
+        self.head = None
+
+    def adicionar_contato(self, nome, telefone):
+        novo_contato = Contato(nome, telefone)
+        novo_contato.proximo = self.head
+        if self.head:
+            self.head.anterior = novo_contato
+        self.head = novo_contato
+
+    def remover_contato(self, nome):
+        atual = self.head
+        while atual and atual.nome != nome:
+            atual = atual.proximo
+        if atual:
+            if atual.anterior:
+                atual.anterior.proximo = atual.proximo
+            else:
+                self.head = atual.proximo
+            if atual.proximo:
+                atual.proximo.anterior = atual.anterior
+
+    def mostrar_contatos(self):
+        atual = self.head
+        while atual:
+            print(f"{atual.nome} - {atual.telefone}")
+            atual = atual.proximo
+
+# Exemplo de uso
+agenda = ListaDuplamenteEncadeada()
+agenda.adicionar_contato("Ana", "9999-1234")
+agenda.adicionar_contato("Bruno", "8888-5678")
+
+print("Contatos na agenda:")
+agenda.mostrar_contatos()
+
+agenda.remover_contato("Ana")
+
+print("\nAgenda após remover 'Ana':")
+agenda.mostrar_contatos()
+
+class Contato:
+    def __init__(self, nome, telefone):
+        self.nome = nome
+        self.telefone = telefone
+        self.anterior = None
+        self.proximo = None
+
+class ListaDuplamenteEncadeada:
+    def __init__(self):
+        self.head = None
+
+    def adicionar_contato(self, nome, telefone):
+        novo_contato = Contato(nome, telefone)
+        novo_contato.proximo = self.head
+        if self.head:
+            self.head.anterior = novo_contato
+        self.head = novo_contato
+
+    def remover_contato(self, nome):
+        atual = self.head
+        while atual and atual.nome != nome:
+            atual = atual.proximo
+        if atual:
+            if atual.anterior:
+                atual.anterior.proximo = atual.proximo
+            if atual.proximo:
+                atual.proximo.anterior = atual.anterior
+            if atual == self.head:
+                self.head = atual.proximo
+
+    def buscar_contato(self, nome):
+        atual = self.head
+        while atual:
+            if atual.nome == nome:
+                return f"Contato encontrado: {atual.nome} - {atual.telefone}"
+            atual = atual.proximo
+        return "Contato não encontrado"
+
+# Exemplo de uso
+agenda = ListaDuplamenteEncadeada()
+agenda.adicionar_contato("Alice", "123456789")
+agenda.adicionar_contato("Bob", "987654321")
+print(agenda.buscar_contato("Bob"))
+agenda.remover_contato("Alice")
+print(agenda.buscar_contato("Alice"))
+
+
+3. Controle de Histórico de Navegação
+
+
+class Pagina:
+    def __init__(self, url):
+        self.url = url
+        self.anterior = None
+        self.proximo = None
+
+class HistoricoNavegacao:
+    def __init__(self):
+        self.atual = None
+
+    def visitar_pagina(self, url):
+        nova_pagina = Pagina(url)
+        if self.atual:
+            self.atual.proximo = nova_pagina
+            nova_pagina.anterior = self.atual
+        self.atual = nova_pagina
+        print(f"Visitando: {self.atual.url}")
+
+    def voltar(self):
+        if self.atual and self.atual.anterior:
+            self.atual = self.atual.anterior
+            print(f"Voltando para: {self.atual.url}")
+            return self.atual.url
+        else:
+            print("Não há página anterior.")
+            return None
+
+    def avancar(self):
+        if self.atual and self.atual.proximo:
+            self.atual = self.atual.proximo
+            print(f"Avançando para: {self.atual.url}")
+            return self.atual.url
+        else:
+            print("Não há página seguinte.")
+            return None
+
+# Exemplo de uso
+historico = HistoricoNavegacao()
+historico.visitar_pagina("www.exemplo.com")
+historico.visitar_pagina("www.python.org")
+historico.visitar_pagina("www.google.com")
+historico.voltar()
+historico.avancar()
+historico.voltar()
+historico.voltar()
+historico.voltar()
+historico.avancar()
+
+
+4. Sistema de Impressão de Documentos
+
+
+class Documento:
+    def __init__(self, nome):
+        self.nome = nome
+        self.proximo = None
+
+class FilaImpressao:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def adicionar_documento(self, nome):
+        novo_documento = Documento(nome)
+        if not self.head:
+            self.head = novo_documento
+            self.tail = novo_documento
+        else:
+            self.tail.proximo = novo_documento
+            self.tail = novo_documento
+        print(f"Documento '{nome}' adicionado à fila.")
+
+    def imprimir_documento(self):
+        if self.head:
+            documento_impresso = self.head.nome
+            self.head = self.head.proximo
+            if not self.head:
+                self.tail = None
+            print(f"Imprimindo documento: {documento_impresso}")
+            return documento_impresso
+        else:
+            print("A fila de impressão está vazia.")
+            return None
+
+    def mostrar_fila(self):
+        atual = self.head
+        if not atual:
+            print("A fila de impressão está vazia.")
+            return
+        print("Fila de impressão:")
+        while atual:
+            print(f"- {atual.nome}")
+            atual = atual.proximo
+
+# Exemplo de uso
+fila = FilaImpressao()
+fila.adicionar_documento("Relatório Financeiro")
+fila.adicionar_documento("Apresentação de Vendas")
+fila.adicionar_documento("Contrato")
+fila.mostrar_fila()
+fila.imprimir_documento()
+fila.mostrar_fila()
+fila.imprimir_documento()
+fila.imprimir_documento()
+fila.imprimir_documento()
+
+
+5. Autocomplete em Buscas
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.proximo = None
+
+class ListaEncadeadaAutocomplete:
+    def __init__(self):
+        self.head = None
+
+    def adicionar_palavra(self, palavra):
+        novo_node = Node(palavra)
+        if not self.head:
+            self.head = novo_node
+        else:
+            atual = self.head
+            while atual.proximo:
+                atual = atual.proximo
+            atual.proximo = novo_node
+
+    def sugerir_palavras(self, prefixo):
+        sugestoes = []
+        atual = self.head
+        while atual:
+            if atual.data.startswith(prefixo):
+                sugestoes.append(atual.data)
+            atual = atual.proximo
+        return sugestoes
+
+# Exemplo de uso
+autocomplete = ListaEncadeadaAutocomplete()
+autocomplete.adicionar_palavra("apple")
+autocomplete.adicionar_palavra("apricot")
+autocomplete.adicionar_palavra("banana")
+autocomplete.adicionar_palavra("grape")
+autocomplete.adicionar_palavra("application")
+
+print(f"Sugestões para 'ap': {autocomplete.sugerir_palavras('ap')}")
+print(f"Sugestões para 'ba': {autocomplete.sugerir_palavras('ba')}")
+print(f"Sugestões para 'g': {autocomplete.sugerir_palavras('g')}")
+print(f"Sugestões para 'or': {autocomplete.sugerir_palavras('or')}")
